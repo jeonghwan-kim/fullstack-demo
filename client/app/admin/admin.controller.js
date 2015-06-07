@@ -8,6 +8,8 @@ angular.module('demoApp')
 
     $scope.delete = function(user) {
       User.remove({ id: user._id });
+
+      // Remove deleted user form $socpe.users array
       angular.forEach($scope.users, function(u, i) {
         if (u === user) {
           $scope.users.splice(i, 1);

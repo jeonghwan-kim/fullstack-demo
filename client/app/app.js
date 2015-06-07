@@ -5,8 +5,7 @@ angular.module('demoApp', [
   'ngResource',
   'ngSanitize',
   'btford.socket-io',
-  'ui.router',
-  'ui.bootstrap'
+  'ui.router'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -20,6 +19,7 @@ angular.module('demoApp', [
     return {
       // Add authorization token to headers
       request: function (config) {
+        console.log('intercepter', config);
         config.headers = config.headers || {};
         if ($cookieStore.get('token')) {
           config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
