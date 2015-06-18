@@ -2,39 +2,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col s12">
       <h1>Change Password</h1>
     </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
-
-        <div class="form-group">
-          <label>Current Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+    <form class="col s12" name="form" ng-submit="changePassword(form)" novalidate>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="" type="password" name="password" id="password" class="validate" ng-model="user.oldPassword"
                  mongoose-error/>
+          <label class="active" for="password">Current Password</label>
           <p class="help-block" ng-show="form.password.$error.mongoose">
               {{ errors.other }}
           </p>
-          <pre>{{form.password|json}}</pre>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label>New Password</label>
+      <div class="row">
+        <div class="input-field col s12">
 
-          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+          <input type="password" name="newPassword" id="newPassword" class="validate" ng-model="user.newPassword"
                  ng-minlength="3"
                  required/>
+          <label for="newPassword" class="active">New Password</label>
           <p class="help-block"
              ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
             Password must be at least 3 characters.
           </p>
         </div>
+      </div>
 
-        <p class="help-block"> {{ message }} </p>
+      <p class="help-block"> {{ message }} </p>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-      </form>
-    </div>
+      <button class="waves-effect waves-light btn" type="submit">Save changes</button>
+    </form>
   </div>
 </div>
